@@ -2,14 +2,21 @@ MyList = [] # создаем список для хранения заметок
 
 
 def user():  # Создаем функцию ввода имени пользователя
-
-    username = input('Введите имя пользователя : ')
-    return username
+    while True:
+        username = input('Введите имя пользователя : ')
+        if any(note["Ваше имя пользователя"] == username for note in MyList):
+            print("пользователь существует")
+            continue
+        return username
 
 
 def content_1():  # Создаем функцию ввода описания
-    content = input('Введите описание заметки : ')
-    return content
+    while True:
+        content = input("Введите описание заметки : ")
+        if content == "":
+            print("Нет описания, повторите ввод")
+            continue
+        return content
 
 
 def date1():  # Создаем функцию учета даты окончания и текущей даты
