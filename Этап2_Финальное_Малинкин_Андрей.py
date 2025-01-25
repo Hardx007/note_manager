@@ -97,13 +97,13 @@ def stat():  # Создаем функцию учета статуса
     status_true = True
     while status_true:  # Цикл While работает, пока его значение истинно
         note_status = input('Введите статус заметки: '
-                            '\n"1" - выполнено'
+                            '\n"1" - новая'
                             '\n"2" - в процессе'
                             '\n"3" - отложено'
                             '\n-> ')
         # Перебираем все возможные варианты ввода и выводим на экран пользователя результат в конце программы
-        if note_status == '1' or note_status == 'выполнено':
-            status_dict['Статус заметки'] = 'выполнено'
+        if note_status == '1' or note_status == 'новая':
+            status_dict['Статус заметки'] = 'новая'
             break
         elif note_status == '2' or note_status == 'в процессе':
             status_dict['Статус заметки'] = 'в процессе'
@@ -113,6 +113,31 @@ def stat():  # Создаем функцию учета статуса
             break
         else:
             print('Неверный вариант ввода')
+    while True:
+        word_stat_ask = input("Хотите изменить статус? "
+                                "\n Да "
+                                "\n Нет"
+                                "\n ->  ")
+        if word_stat_ask.lower() == "да":
+            print("Выберите новый статус заметки путем ввода значения от 1 до 3 ")
+            new_stat = input(   '\n"1" - новая'
+                                '\n"2" - в процессе'
+                                '\n"3" - отложено'
+                                '\n-> ')
+            if new_stat == "1":
+                status_dict['Статус заметки'] = 'новая'
+                print(f"Статус заметки изменен на -> {status_dict['Статус заметки']}")
+            elif new_stat == "2":
+                status_dict['Статус заметки'] = 'в процессе'
+                print(f"Статус заметки изменен на -> {status_dict['Статус заметки']}")
+            elif new_stat == "3":
+                status_dict['Статус заметки'] = 'отложено'
+                print(f"Статус заметки изменен на -> {status_dict['Статус заметки']}")
+        elif word_stat_ask.lower() == "нет":
+            break
+        else:
+            print("Неверный ввод!")
+            continue
     return status_dict
 
 def note_del(): # функция удаления
